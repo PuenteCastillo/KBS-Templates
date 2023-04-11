@@ -63,6 +63,25 @@ register_deactivation_hook( __FILE__, 'deactivate_kbs_templates' );
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-kbs_templates.php';
+// include new templates 
+require plugin_dir_path( __FILE__ ) . 'includes/new_templates.php';
+// include custom fields
+require plugin_dir_path( __FILE__ ) . 'includes/custom_fields.php';
+
+
+// add css files 
+
+
+function kbs_temp_css(){
+	wp_enqueue_script( 'kbs_temp_logi', plugin_dir_url( __FILE__ ) .'src/logic.js', array('jquery'), true);
+	wp_enqueue_style( 'kbs_temp_css', plugins_url('/style.css', __FILE__), false, '1.0.0', 'all');
+}
+add_action('wp_enqueue_scripts', "kbs_temp_css");
+
+
+
+
+
 
 /**
  * Begins execution of the plugin.
